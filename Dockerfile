@@ -15,3 +15,9 @@ RUN apt-get update && apt -y install \
     # utility \
     tmux \
 && rm -rf /var/lib/apt/lists/*
+
+ARG UNAME=testuser
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g $GID -o $UNAME \
+&& useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
